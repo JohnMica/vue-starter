@@ -1,7 +1,7 @@
 import * as Express from 'express';
 import { Request, Response } from 'express';
 import { serve } from '../utils/Utils';
-import { randomInt } from '@/app/shared/utils/misc';
+import { randomInt } from '@shared/utils/misc';
 
 const getErrorWithProbability = (probability: number) => randomInt(0, 100) <= probability;
 
@@ -20,7 +20,9 @@ export const DemoRoutes = (app: Express.Application) => {
     }
   });
   app.use('/storybook', serve('../../storybook-static'));
-  app.use('/docs', serve('../docs'));
+  app.use('/docs', (req: Request, res: Response) => {
+    res.status(301).redirect('https://vuesion.github.io/docs/en/');
+  });
 
   /**
    * Auth-Demo

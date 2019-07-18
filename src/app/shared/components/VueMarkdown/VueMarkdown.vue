@@ -20,6 +20,12 @@ marked.setOptions({
 
 export default {
   name: 'VueMarkdown',
+  props: {
+    useRouter: {
+      type: Boolean,
+      default: true,
+    },
+  },
   data(): any {
     return {
       html: '',
@@ -39,6 +45,10 @@ export default {
       this.html = (marked as any)(text);
     },
     handleClick(event: any) {
+      if (this.useRouter === false) {
+        return true;
+      }
+
       const { target } = event;
       const url = new URL(target.href);
       const to = url.pathname;
@@ -76,7 +86,7 @@ export default {
   h5,
   h6 {
     font-family: $font-family-headings;
-    margin: $space-unit * 3 0 $space-unit * 2 0;
+    margin: 0;
   }
 
   h1 {
@@ -122,7 +132,7 @@ export default {
   }
 
   table {
-    margin-bottom: $space-unit * 3;
+    margin-bottom: $space-12;
     width: 100%;
     table-layout: fixed;
   }
@@ -137,7 +147,7 @@ export default {
   }
 
   p {
-    margin: $space-unit * 2 0;
+    margin: $space-12 0;
   }
 }
 </style>

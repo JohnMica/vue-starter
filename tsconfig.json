@@ -12,10 +12,13 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@components/*": ["src/app/shared/components/*"],
+      "@static/*": ["src/static/*"]
     },
     "rootDirs": ["src"]
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
-  "exclude": ["./node_modules", "./dist", "./**/*.stories.ts"]
+  "exclude": ["./node_modules", "./dist"]
 }
